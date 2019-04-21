@@ -1,0 +1,89 @@
+<sheelu-base-layout>
+
+  <div class="user-container mat-elevation-z4">
+
+    <mat-sidenav-container>
+      <mat-sidenav class="mat-elevation-z2" mode="side" [opened]="sideOpen">
+
+        <mat-nav-list class="nav-list">
+          <h3 mat-subheader>
+            <span>User users</span>
+            <span fxFlex></span>
+            <button mat-icon-button (click)="onSideTriggered()">
+              <mat-icon>menu</mat-icon>
+            </button>
+          </h3>
+          <a class="nav-item" *ngFor="let role of userRolesList;" mat-list-item (click)="userTabChange(role.id)" [ngClass]="(userRoles == role.id? 'role-selected': '')">
+            <h3 class="nav-title" mat-line>
+              <mat-icon class="icon">mail</mat-icon>
+              <span class="text"> {{role.name}}
+             </span>
+            </h3>
+          </a>
+          <mat-divider></mat-divider>
+          <a class="nav-item" mat-list-item (click)="userTabChange(-1)" [ngClass]="(userRoles == -1? 'role-selected': '')">
+            <h3 class="nav-title" mat-line>
+              <mat-icon class="icon">local_offer</mat-icon>
+              <span class="text">All Users </span>
+            </h3>
+          </a>
+        </mat-nav-list>
+
+      </mat-sidenav>
+
+      <div class="content-container p-10">
+        <div class="toolbar mat-elevation-z2" fxLayout="row" fxLayoutAlign="start center" [ngClass]="{'show': checked}">
+          <button mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+         <button mat-fab class="contact-add-btn" (click)="Add()"><mat-icon>person_add</mat-icon></button>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+           <!--  <th>
+              <mat-checkbox class="checkbox" [(ngModel)]="checked"></mat-checkbox>
+            </th> -->
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Phone</th>
+            <th>Age</th>
+            <th>Gender</th>            
+            <th>Status</th>
+            <th>Manage operations</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of users">
+            <!-- <td>
+              <mat-checkbox class="checkbox" [checked]="checked"></mat-checkbox>
+            </td> -->
+            <td>{{ user.firstName +  ' ' + user.lastName}}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ getUserRole(user.roleId) }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.isActive? 'Active': 'DeActivate' }}</td>
+            <td>
+              <button mat-icon-button (click)="edit(user)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="delete(user)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      <mat-paginator [length]="length"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="pageSizeOptions"
+          (page)="pageEvent = $event">
+      </mat-paginator>
+      </div>
+    </mat-sidenav-container>
+  </div>
+
+</sheelu-base-layout>

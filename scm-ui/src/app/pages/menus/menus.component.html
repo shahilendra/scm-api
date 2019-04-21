@@ -1,0 +1,50 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex>
+    <mat-card-title>Menu</mat-card-title>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="All Menu">
+         <div class="content-container p-10">
+	          <button mat-fab class="contact-add-btn" (click)="Add()"><mat-icon>person_add</mat-icon></button>
+	        <table class="table table-hover">
+	          <thead>
+	          <tr>
+	            <th>Title</th>
+	            <th>Type</th>
+	            <th>Icon</th>
+	            <th>Url</th>
+	            <th>Parent Menu</th>
+	            <th>Active</th>            
+	            <th>ModifiedBy</th>
+	            <th>ModifiedAt</th>
+	            <th>Manage operations</th>
+	          </tr>
+	          </thead>
+	          <tbody>
+	          <tr *ngFor="let menu of menus">	            
+	            <td>{{ menu.title }}</td>
+	            <td>{{ menu.type}}</td>
+	            <td><mat-icon>{{ menu.icon }}</mat-icon></td>
+	            <td>{{ menu.url}}</td>
+	            <td>{{getParentName(menu)}}</td>
+	            <td>{{ menu.isActive? 'Active' : 'DeActivate' }}</td>	            
+	            <td>{{ menu.updatedBy? menu.updatedBy : menu.createdBy}}</td>
+	            <td>{{ (menu.updatedAt? menu.updatedAt : menu.createdAt) | date: 'short' }}</td>
+	            <td>
+	              <button mat-icon-button (click)="edit(menu)">
+	                <mat-icon>edit</mat-icon>
+	              </button>
+	              <button mat-icon-button (click)="delete(menu)">
+                <mat-icon>delete</mat-icon>
+              </button>
+	            </td>
+	          </tr>
+	          </tbody>
+	        </table>
+	      </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+
+</div>

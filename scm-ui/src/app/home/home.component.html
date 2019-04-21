@@ -1,0 +1,250 @@
+<div fxLayout="column" class="section-container">
+  <div class="fix-width">
+    <div fxLayout="row">
+      <div class="home-logo"><a [routerLink]="['/apps/navigation']">{{orginization.companyName}}</a></div>
+      <span fxFlex></span>
+      <ul class="nav">
+        <li><a href="/home">Home</a></li>
+        <li *ngIf="!isAuthenticated"><a href="/sigin">SignIn</a></li>
+        <li *ngIf="!isAuthenticated"><a href="/sigup">SignUp</a></li>
+        <li *ngIf="isAuthenticated"><a style="cursor: pointer;" (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center center" class="content">
+      <h2 class="text-white">Universal Device Management System and Rapid Development Framework</h2>
+      <h3 class="text-center"></h3>
+      <h5>Current version: 0.0.1 </h5>
+    </div>
+  </div>
+</div>
+
+<div class="m-20">
+  <div class="fix-width">
+    <h2 class="text-center">Games &amp; Games</h2>
+    <div fxLayout="row" fxLayoutWrap class="m-t-40">
+      <div fxFlex.gt-sm="25" class="advantage-card text-center m-b-20">
+        <mat-icon class="home-icon">color_lens</mat-icon>
+        <h4 class="font-500">Game 1</h4>
+        <p>Game with play single player</p>
+      </div>
+
+      <div fxFlex.gt-sm="25" class="advantage-card text-center m-b-20">
+        <mat-icon>view_array</mat-icon>
+        <h4 class="font-500">Game 1</h4>
+        <p>Game with play single player</p>
+      </div>
+
+      <div fxFlex.gt-sm="25" class="advantage-card text-center m-b-20">
+        <mat-icon>view_quilt</mat-icon>
+        <h4 class="font-500">Game 1</h4>
+        <p>Game with play single player</p>
+      </div>
+
+      <div fxFlex.gt-sm="25" class="advantage-card text-center m-b-20">
+        <mat-icon>settings_input_component</mat-icon>
+       <h4 class="font-500">Game 1</h4>
+        <p>Game with play single player</p>
+      </div>
+
+      <div fxFlex.gt-sm="25" class="advantage-card text-center m-b-20">
+        <mat-icon>settings</mat-icon>
+        <h4 class="font-500">Game 1</h4>
+        <p>Game with play single player</p>
+      </div>
+
+      <div fxFlex.gt-sm="25" class="advantage-card text-center m-b-20">
+        <mat-icon>dashboard</mat-icon>
+       <h4 class="font-500">Game 1</h4>
+        <p>Game with play single player</p>
+      </div>
+
+      <div fxFlex.gt-sm="25" class="advantage-card text-center m-b-20">
+        <mat-icon>screen_lock_landscape</mat-icon>
+       <h4 class="font-500">Game 1</h4>
+        <p>Game with play single player</p>
+      </div>
+
+      <div fxFlex.gt-sm="25" class="advantage-card text-center m-b-20">
+        <mat-icon>code</mat-icon>
+        <h4 class="font-500">Game 1</h4>
+        <p>Game with play single player</p>
+      </div>
+
+      <div fxFlex.gt-sm="25" class="advantage-card text-center">
+        <mat-icon>view_module</mat-icon>
+        <h4 class="font-500">Game 1</h4>
+        <p>Game with play single player</p>
+      </div>
+
+      <div fxFlex.gt-sm="25" class="advantage-card text-center">
+        <mat-icon>pie_chart</mat-icon>
+       <h4 class="font-500">Game 1</h4>
+        <p>Game with play single player</p>
+      </div>
+
+      <div fxFlex.gt-sm="25" class="advantage-card text-center">
+        <mat-icon>verified_user</mat-icon>
+        <h4 class="font-500">Game 1</h4>
+        <p>Game with play single player</p>
+      </div>
+
+      <div fxFlex.gt-sm="25" class="advantage-card text-center">
+        <mat-icon>cached</mat-icon>
+        <h4 class="font-500">Game 1</h4>
+        <p>Game with play single player</p>
+      </div>
+    </div>
+    <div class="text-center m-t-40">
+      <a href="/" class="mat-button sheelu-button sheelu-button-lg sheelu-button-outline" mat-ripple>Buy now</a>
+    </div>
+  </div>
+</div>
+
+<div class="product-container">
+  <div class="fix-width">
+    <div class="product-card">
+      <h2 class="text-center">Its Players</h2>
+      <div class="product-subtitle">For the Internet age, users and businesses tailor a variety of high-end web sites, providing the ultimate service experience for the enterprise.</div>
+    </div>
+    <div fxLayout="row" fxLayoutWrap>
+      <mat-card fxFlex.gt-sm="23" fxFlex.gt-xs="31" fxFlex="100">
+        <img mat-card-image src="assets/images-demo/assets/1.png">
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <mat-icon mat-list-avatar class="list-avatar-icon">search</mat-icon>
+              <h3 mat-line>Community system</h3>
+              <p mat-line>
+                <span>Community system</span>
+              </p>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-avatar class="list-avatar-icon">widgets</mat-icon>
+              <h3 mat-line>Free and open source</h3>
+              <p mat-line>
+                <span>Follow the Apache2 open source protocol release</span>
+              </p>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-avatar class="list-avatar-icon">settings_input_component</mat-icon>
+              <h3 mat-line>Deep integration</h3>
+              <p mat-line>
+                <span>Based on the angular development framework</span>
+              </p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="button" class="mat-button sheelu-button sheelu-button-outline sheelu-button-block" mat-ripple>View</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card fxFlex.gt-sm="23" fxFlex.gt-xs="31" fxFlex="100">
+        <img mat-card-image src="assets/images-demo/assets/2.png">
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <mat-icon mat-list-avatar class="list-avatar-icon">home</mat-icon>
+              <h3 mat-line>Enterprise System (Custom Edition)</h3>
+              <p mat-line>
+                <span>$999 up</span>
+              </p>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-avatar class="list-avatar-icon">star_border</mat-icon>
+              <h3 mat-line>High-end build</h3>
+              <p mat-line>
+                <span>For business and enterprise development</span>
+              </p>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-avatar class="list-avatar-icon">supervisor_account</mat-icon>
+              <h3 mat-line>Technical Support</h3>
+              <p mat-line>
+                <span>7 times 8 hours technical customer service online</span>
+              </p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="button" class="mat-button sheelu-button sheelu-button-outline sheelu-button-block" mat-ripple>View</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card fxFlex.gt-sm="23" fxFlex.gt-xs="31" fxFlex="100">
+        <img mat-card-image src="assets/images-demo/assets/3.png">
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <mat-icon mat-list-avatar class="list-avatar-icon">security</mat-icon>
+              <h3 mat-line>Commercial licensing (to copyright)</h3>
+              <p mat-line>
+                <span>$200 up</span>
+              </p>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-avatar class="list-avatar-icon">cloud_upload</mat-icon>
+              <h3 mat-line>Free upgrade</h3>
+              <p mat-line>
+                <span>The first time to solve your update and upgrade issues</span>
+              </p>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-avatar class="list-avatar-icon">credit_card</mat-icon>
+              <h3 mat-line>Secondary development</h3>
+              <p mat-line>
+                <span>Standard HTML5 open source front-end practice program</span>
+              </p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="button" class="mat-button sheelu-button sheelu-button-outline sheelu-button-block" mat-ripple>View</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card fxFlex.gt-sm="23" fxFlex.gt-xs="31" fxFlex="100">
+        <img mat-card-image src="assets/images-demo/assets/4.png">
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <mat-icon mat-list-avatar class="list-avatar-icon">search</mat-icon>
+              <h3 mat-line>CRM</h3>
+              <p mat-line>
+                <span>From $399</span>
+              </p>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-avatar class="list-avatar-icon">widgets</mat-icon>
+              <h3 mat-line>Professional solutions</h3>
+              <p mat-line>
+                <span>Meet your rapidly changing business needs</span>
+              </p>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-avatar class="list-avatar-icon">settings_input_component</mat-icon>
+              <h3 mat-line>Stable and reliable</h3>
+              <p mat-line>
+                <span>Efficient use of resources</span>
+              </p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="button" class="mat-button sheelu-button sheelu-button-outline sheelu-button-block" mat-ripple>View</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="fix-width">
+    <div fxLayout="row" class="footer-copyright">
+      <span>Copyright {{orginization.currentYear}}. All Rights Reserved by {{orginization.developerName}}</span>
+      <span fxFlex></span>
+      <span>Design & Developed by <a [href]="orginization.gitURL" target="blank">{{orginization.developerName}}</a></span>
+    </div>
+  </div>
+</footer>

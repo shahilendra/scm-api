@@ -1,0 +1,33 @@
+<div class="stb-calendar" [class.stb-calendar-landspace]="mode">
+
+  <sheelu-date-display [selectedDate]="selectedDate"></sheelu-date-display>
+
+  <div class="stb-calendar-container">
+    <div class="stb-calendar-monthday-container">
+      <sheelu-calendar-toolbar [displayDates]="displayDates" (monthChange)="onMonthChange($event)"></sheelu-calendar-toolbar>
+
+      <div class="stb-calendar-week">
+        <span class="stb-calendar-week-day">1</span>
+        <span class="stb-calendar-week-day">2</span>
+        <span class="stb-calendar-week-day">3</span>
+        <span class="stb-calendar-week-day">4</span>
+        <span class="stb-calendar-week-day">5</span>
+        <span class="stb-calendar-week-day">6</span>
+        <span class="stb-calendar-week-day">7</span>
+      </div>
+
+      <div class="stb-calendar-monthday">
+        <div class="stb-calendar-monthday-slide">
+          <sheelu-calendar-month (selected)="onSelected($event)" [displayDate]="displayDate" *ngFor="let displayDate of displayDates"></sheelu-calendar-month>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="stb-calendar-actions">
+      <button mat-button color="primary" (click)="onCancelDatePickerTriggered()">Cancel</button>
+      <button mat-button color="primary" (click)="onConfirmDatePickerTriggered()">Apply</button>
+    </div>
+
+  </div>
+</div>

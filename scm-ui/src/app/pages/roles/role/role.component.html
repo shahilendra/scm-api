@@ -1,0 +1,27 @@
+<div class="header-container">
+  <div class="contact-dialog-title" fxLayout="row" fxLayoutAlign="space-between">
+    <div class="text-black"><h1>{{(isAdd ? 'Add New Role': 'Edit Role')}}</h1></div>
+    <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-dialog-content>
+    <form fxLayout="column" #formContact="ngForm">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Name" name="name" [(ngModel)]="data.name" #name="ngModel" required minlength="4" maxlength="`50">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Description" name="descriptions" [(ngModel)]="data.descriptions" #descriptions="ngModel"  required 
+        minlength="4" maxlength="500">
+      </mat-form-field>
+      <mat-checkbox class="checkbox" [(ngModel)]="data.isActive" name="isActive" #isActive="ngModel">
+        <label>IsActive</label> 
+      </mat-checkbox>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-raised-button (click)="close()">Close</button>
+  <button mat-raised-button color="primary" (click)="update()" [disabled]="!formContact.valid">{{isAdd? 'Add': 'Updated'}}</button>
+</mat-dialog-actions>

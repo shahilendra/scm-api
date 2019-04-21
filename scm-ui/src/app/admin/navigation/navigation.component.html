@@ -1,0 +1,16 @@
+<div class="navigation-container">
+  <div class="navigation-scrollbar-container">
+    <perfect-scrollbar>
+      <ng-container *ngFor="let navigation of navigationModel">
+        <app-nav-collapse *ngIf="navigation.type == 'collapse'" [item]="navigation"></app-nav-collapse>
+        <app-nav-item *ngIf="navigation.type=='item'" [item]="navigation"></app-nav-item>
+      </ng-container>
+    </perfect-scrollbar>
+  </div>
+
+  <div class="navigation-footer">
+    <a matRipple [href]="orginization.helpURL" target="blank">
+      <mat-icon>help</mat-icon>
+      Help and support</a>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="header-container">
+  <div class="contact-dialog-title" fxLayout="row" fxLayoutAlign="space-between">
+    <div class="text-black"><h1>{{(isAdd ? 'Add New Menu': 'Edit Menu')}}</h1></div>
+    <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-dialog-content>
+    <form fxLayout="column" #formContact="ngForm">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Title" name="title" [(ngModel)]="data.title" #title="ngModel" required maxlength="50">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Unique Menu Id" name="menuId" [(ngModel)]="data.menuId" #menuId="ngModel"  required 
+        minlength="4" maxlength="500">
+      </mat-form-field>
+      <mat-form-field>
+      	<mat-select placeholder="Select Menu Type" name="type" [(ngModel)]="data.type" #type="ngModel">
+		    <mat-option *ngFor="let type of types" [value]="type">
+		      {{ type }}
+		    </mat-option>
+		</mat-select>
+	  </mat-form-field>
+      <mat-form-field class="full-width" *ngIf="data.type=='item'">
+        <input matInput placeholder="Menu Url" name="url" [(ngModel)]="data.url" #url="ngModel"  required 
+        minlength="4" maxlength="500">
+      </mat-form-field>
+   	<mat-form-field class="full-width">
+        <input matInput type="number" placeholder="Display Order" name="displayOrder" [(ngModel)]="data.displayOrder" #displayOrder="ngModel"  required  
+        >
+      </mat-form-field>
+    <mat-form-field>
+      	<mat-select placeholder="Select Parent Menu" name="parentId" [(ngModel)]="data.parentId" #parentId="ngModel">
+      		<mat-option [value]="0">
+		      None
+		    </mat-option>
+		    <mat-option *ngFor="let menu of menus" [value]="menu.id">
+		      {{ menu.title }}
+		    </mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field>
+      	<mat-select placeholder="Select Icon" name="icon" [(ngModel)]="data.icon" #icon="ngModel">
+      	<mat-select-trigger>
+		        <mat-icon>{{ data.icon }}</mat-icon>
+		    </mat-select-trigger>
+		    <mat-option *ngFor="let icon of icons" [value]="icon">
+		      <mat-icon>{{ icon }}</mat-icon>
+		    </mat-option>
+		</mat-select>
+	</mat-form-field>
+      <mat-checkbox class="checkbox" [(ngModel)]="data.isActive" name="isActive" #isActive="ngModel">
+        <label>IsActive</label> 
+      </mat-checkbox>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-raised-button (click)="close()">Close</button>
+  <button mat-raised-button color="primary" (click)="update()" [disabled]="!formContact.valid">{{isAdd? 'Add': 'Updated'}}</button>
+</mat-dialog-actions>
+
+

@@ -1,0 +1,5 @@
+<div class="stb-calendar-monthday-content">
+  <div class="stb-calendar-monthday-row" *ngFor="let week of weeksArray">
+    <sheelu-day-button (click)="onSelectedTrigger(date)" [date]="date" *ngFor="let date of week"></sheelu-day-button>
+  </div>
+</div>

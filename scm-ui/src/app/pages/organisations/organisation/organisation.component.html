@@ -1,0 +1,75 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex>
+    <mat-card-title>
+      <!-- <div class="row">
+        <h1>{{((this.id=='add') ? 'Add New Organisation': 'Edit Organisation')}}</h1>        
+      </div> -->
+    </mat-card-title>
+    <mat-card-content>
+      <mat-tab-group>
+          <mat-tab label="Organisation: {{(organisation.name? organisation.name: 'N/A')}}">
+        <sheelu-base-layout>
+          <div fxLayout="row">
+            <mat-card fxFlex>
+              <mat-card-title>Organisation Information</mat-card-title>
+              <mat-card-content>
+                <form fxLayout="column" #formContact="ngForm" (ngSubmit)="onSubmit()">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Name" name="name" [(ngModel)]="organisation.name" #name="ngModel" required minlength="4" maxlength="`50">
+                  </mat-form-field>
+                  <mat-form-field class="full-width">
+                    <textarea matInput placeholder="Description" rows="3" name="descriptions" [(ngModel)]="organisation.descriptions" #descriptions="ngModel" required></textarea>
+                  </mat-form-field>
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="Details" name="details" [(ngModel)]="organisation.details" #details="ngModel" required minlength="4" maxlength="1000">
+                  </mat-form-field>
+                  <button mat-raised-button color="primary" type="submit" [disabled]="!formContact.valid">Submit</button>
+                </form>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </sheelu-base-layout>
+        </mat-tab>
+         <mat-tab label="Payment" *ngIf="this.id!='add'">
+          <button mat-fab class="contact-add-btn" (click)="AddPaymentGatewaysDetail()"><mat-icon>person_add</mat-icon></button>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th>MerchantId</th>
+                <th>ChannelId</th>
+                <th>IndustryTypeId</th>
+                <th>WebSite</th>
+                <th>PaymentGatewayId</th> 
+                <th>Active</th>           
+                <th>ModifiedBy</th>
+                <th>ModifiedAt</th>
+                <th>Manage operations</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let paymentGatewaysDetail of paymentGatewaysDetails">             
+                <td>{{ paymentGatewaysDetail.merchantId }}</td>
+                <td>{{ paymentGatewaysDetail.channelId}}</td>
+                <td>{{ paymentGatewaysDetail.industryTypeId}}</td>
+                <td>{{ paymentGatewaysDetail.webSite}}</td>
+                <td>{{ paymentGatewaysDetail.paymentGatewayId}}</td>
+                <td>{{ paymentGatewaysDetail.isActive? 'Active' : 'DeActivate' }}</td>              
+                <td>{{ paymentGatewaysDetail.updatedBy? paymentGatewaysDetail.updatedBy : paymentGatewaysDetail.createdBy}}</td>
+                <td>{{ (paymentGatewaysDetail.updatedAt? paymentGatewaysDetail.updatedAt : paymentGatewaysDetail.createdAt) | date: 'short' }}</td>
+                <td>
+                  <button mat-icon-button  (click)="editPaymentGatewaysDetail(paymentGatewaysDetail)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button (click)="deletePaymentGatewaysDetail(paymentGatewaysDetail)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+         </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+
+</div>

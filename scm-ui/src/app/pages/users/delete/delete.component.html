@@ -1,0 +1,15 @@
+ <div class="header-container">
+  <div class="contact-dialog-title" fxLayout="row" fxLayoutAlign="space-between">
+    <div><h1>Delete User</h1></div>
+    <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-dialog-content>
+    <p>Are you sure, would you like to delete <b>{{data.firstName + ' ' +  data.lastName}} </b> account?</p>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-raised-button (click)="close()">Close</button>
+  <button mat-raised-button color="denger" (click)="delete()">Delete</button>
+</mat-dialog-actions>

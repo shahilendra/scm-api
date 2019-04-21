@@ -1,0 +1,13 @@
+@mixin sheelu-theme-color() {
+  @each $name, $color in $sheelu-theme-colors {
+
+    .sheelu-background-#{$name} {
+      color: mat-color($color, default-contrast) !important;
+      background-color: mat-color($color, default) !important;
+    }
+
+    .sheelu-#{$name} {
+      background-color: mat-color($color, default) !important;
+    }
+  }
+}

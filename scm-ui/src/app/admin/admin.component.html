@@ -1,0 +1,17 @@
+<mat-sidenav-container [class.boxed]="layoutMode">
+  <mat-sidenav class="sidenav" [align]="sidenavAlign" [mode]="sidenavMode" [opened]="sidenavOpen" #sidenav>
+    <app-brand [ngClass]="settings.colorClasses.brand"></app-brand>
+    <app-navigation [ngClass]="settings.colorClasses.navigation"></app-navigation>
+  </mat-sidenav>
+
+  <div class="sidenav-container" fxLayout="column">
+    <app-header [customizer]="customizer" [sidenav]="sidenav" [ngClass]="settings.colorClasses.header" *ngIf="settings.layout.header=='below'"></app-header>
+
+    <div class="main-container" #scrollContainer>
+      <router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>
+    </div>
+
+    <app-footer *ngIf="settings.layout.footer=='below'"></app-footer>
+  </div>
+
+</mat-sidenav-container>

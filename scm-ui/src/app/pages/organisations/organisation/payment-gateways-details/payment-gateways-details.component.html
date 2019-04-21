@@ -1,0 +1,42 @@
+<div class="header-container">
+  <div class="contact-dialog-title" fxLayout="row" fxLayoutAlign="space-between">
+    <div class="text-black"><h1>{{((this.id=='add') ? 'Add New Payment Gateway Detail': 'Edit Payment Gateway Detail')}}</h1></div>
+    <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-dialog-content>
+    <form fxLayout="column" #formContact="ngForm">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="MerchantId" name="merchantId" [(ngModel)]="data.merchantId" #merchantId="ngModel" required maxlength="`50">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="ChannelId" name="channelId" [(ngModel)]="data.channelId" #channelId="ngModel" required maxlength="`50">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="IndustryTypeId" name="industryTypeId" [(ngModel)]="data.industryTypeId" #industryTypeId="ngModel" required maxlength="`50">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="WebSite" name="webSite" [(ngModel)]="data.webSite" #webSite="ngModel"  required 
+        maxlength="500">
+      </mat-form-field>
+      <mat-form-field>
+       <mat-select placeholder="Select Payment Gateway" name="paymentGatewayId" [(ngModel)]="data.paymentGatewayId" #paymentGatewayId="ngModel">
+       <mat-option *ngFor="let paymentGateway of paymentGateways" [value]="paymentGateway.id">
+         {{ paymentGateway.name }}
+         </mat-option>
+         </mat-select>
+       </mat-form-field>
+      <mat-checkbox class="checkbox" [(ngModel)]="data.isActive" name="isActive" #isActive="ngModel">
+        <label>IsActive</label> 
+      </mat-checkbox>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-raised-button (click)="close()">Close</button>
+  <button mat-raised-button color="primary" (click)="update()" [disabled]="!formContact.valid">{{isAdd? 'Add': 'Update'}}</button>
+</mat-dialog-actions>
