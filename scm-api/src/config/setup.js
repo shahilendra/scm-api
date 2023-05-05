@@ -58,7 +58,27 @@ const dropTestDbs = () => {
     models.organisationsUsers.sync(),
     models.analytics.sync(),
     models.menusPermissions.sync(),
-    models.supportQuery.sync()
+    models.supportQuery.sync(),
+    models.calvingType.sync(),
+    models.breed.sync(),
+    models.color.sync(),
+    models.occurrence.sync(),
+    models.calvingOperator.sync(),
+    models.location.sync(),
+    models.group.sync(),
+    models.semen.sync(),
+    models.status.sync(),
+    models.siblingsType.sync(),
+    models.animal.sync(),
+    models.transaction.sync(),
+    models.note.sync(),
+    models.insemination.sync(),
+    models.lactation.sync(),
+    models.animalBodyScore.sync(),
+    models.animalLocation.sync(),
+    models.animalMilkYield.sync(),
+    models.animalWeight.sync(),
+    models.animalGroup.sync()
   ]);
 };
 

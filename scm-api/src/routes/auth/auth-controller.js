@@ -19,13 +19,13 @@ router.post('/login', function(req, res) {
     })
     .then((user) => {
       if (!user)
-        return helpers.finalError(401, 'No user found.');
+        return helpers.finalError(401, { message: 'No user found.' });
       if(!user.isActive) {
-        return helpers.finalError(401, 'Your account is not activated please contact with customer supports.');
+        return helpers.finalError(401, { message: 'Your account is not activated please contact with customer supports.'});
       }
       let passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
       if (!passwordIsValid)
-        return helpers.finalError(401, { auth: false, token: null, user: null });
+        return helpers.finalError(401, { auth: false, token: null, user: null, message: 'User password is not correct!.'});
       return helpers.getUserProfile(user);
     })
     .then((user) => {
@@ -82,9 +82,9 @@ router.post('/login-as-organization', VerifyToken, function(req, res) {
     })
     .then((user) => {
       if (!user)
-        return helpers.finalError(401, 'No user found.');
+        return helpers.finalError(401, { message: 'No user found.'});
       if(!user.isActive) {
-        return helpers.finalError(401, 'Your account is not activated please contact with customer supports.');
+        return helpers.finalError(401, { message: 'Your account is not activated please contact with customer supports.'});
       }
       return helpers.getUserProfile(user);
     })
@@ -163,10 +163,24 @@ router.post('/register', function(req, res) {
     age: req.body.age,
     gender: req.body.gender,
     roleId: 1,
-    isActive: false,
+    isActive: true,
     isActivated: false,
     activationCode: helpers.getRendomeString()
   })
+  .then((user) =>{ 
+    return models.organisationsUsers.create({
+      userId: user.id,
+      organisationId: 1,
+      createdBy: `${user.firstName} ${user.lastName} (${user.email})`,
+      updatedBy: `${user.firstName} ${user.lastName} (${user.email})`,
+    })
+    .then((orgUser)=>{
+      return Promise.resolve(user);
+    })
+    .catch((error)=>{
+      return Promise.reject(error);
+    });    
+   })
   .then((user) => {
     return helpers.getUserProfile(user);
   })
@@ -178,7 +192,7 @@ router.post('/register', function(req, res) {
     return helpers.finalResponse(200, responseUser, res);
   })
   .catch((error) => {
-    return res.status(500).send("There was a problem registering the user`.");
+    return helpers.finalResponse(error.status , error, res);
   });
 });
 
