@@ -6,7 +6,7 @@ const sequelize = require("../../../db");
 
 router.get('/', function(req, res, next) {
        return sequelize.query(`SELECT al.id, al.locationId, al.startDate, al.endDate, l.name from AnimalLocations al INNER JOIN Locations l on al.locationId=l.id
-    where al.animalId = :animalId AND al.organisationId = :orgId AND al.isActive = 1`,
+    where al.animalId = :animalId AND al.organisationId = :orgId AND al.isActive = 1 ORDER BY startDate DESC`,
         { replacements: { animalId: req.params.animalId, orgId: req.organisationId }, type: sequelize.QueryTypes.SELECT }
       )
       .then((animalLocations) => {

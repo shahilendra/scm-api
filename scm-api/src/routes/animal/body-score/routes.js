@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
         animalId: req.params.animalId
       },
       order: [
-        ['updatedAt', 'DESC'],
+        ['date', 'DESC'],
     ],
     })
       .then((animalBodyScores) => {

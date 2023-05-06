@@ -6,7 +6,7 @@ const organisations = require("./organisations");
 const insemination = sequelize.define('Insemination', 
     { 
         date: { type: Sequelize.DATE, allowNull: false},
-        time: { type: Sequelize.TIME, allowNull: false},
+        time: { type: Sequelize.STRING(10), allowNull: false},
         examinationDate: { type: Sequelize.DATE, allowNull: false},
         price: { type: Sequelize.DECIMAL, allowNull: true},
         staff: { type: Sequelize.STRING(256), allowNull: true},

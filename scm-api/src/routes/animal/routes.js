@@ -75,6 +75,18 @@ router.delete('/:id', function(req, res, next) {
       return helpers.finalResponse(error.status , error, res);
     });
 });
+
+router.get('/:id/profiles', function(req, res, next) {
+  return sequelize.query(`EXEC sp_GetAnimal :orgId, :animalId`,
+        { replacements: { orgId: req.organisationId, animalId: parseInt(req.params.id)}, type: sequelize.QueryTypes.SELECT }
+      )
+    .then((animal) => {
+      return helpers.finalResponse(200 , animal[0], res);
+    })
+    .catch((error) => {
+      return helpers.finalResponse(error.status , error, res);
+    });
+});
 router.use('/:animalId/transactions', require('./transaction'));  //tested
 router.use('/:animalId/notes', require('./note'));  //tested
 router.use('/:animalId/inseminations', require('./insemination'));  //tested

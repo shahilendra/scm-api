@@ -7,7 +7,7 @@ const animalWeight = sequelize.define('AnimalWeight',
     { 
         date: { type: Sequelize.DATE, allowNull: false},
         weight: { type: Sequelize.DOUBLE, allowNull: false},
-        time: { type: Sequelize.TIME, allowNull: false},
+        time: { type: Sequelize.STRING(10), allowNull: false},
         isActive: { type: Sequelize.BOOLEAN, allowNull: false, defaultValue: true },
         createdBy:  { type: Sequelize.STRING(256), allowNull: false},
         updatedBy:  { type: Sequelize.STRING(256), allowNull: true},

@@ -10,7 +10,7 @@ module.exports = {
     database: 'crctt_new',
     user: 'sa',
     password: 'sa@123',
-    host: '192.168.0.104',
+    host: '127.0.0.1',
     dialect: 'mssql',
     port: 59298, //1433,
     encrypt: false,

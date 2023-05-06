@@ -6,7 +6,7 @@ const organisations = require("./organisations");
 const animalMilkYield = sequelize.define('AnimalMilkYield', 
     { 
         date: { type: Sequelize.DATE, allowNull: false},
-        time: { type: Sequelize.TIME, allowNull: true},
+        time: { type: Sequelize.STRING(10), allowNull: true},
         milkYield: { type: Sequelize.DOUBLE, allowNull: false},
         milkingTime: { type: Sequelize.STRING(20), allowNull: false }, 
         isActive: { type: Sequelize.BOOLEAN, allowNull: false, defaultValue: true },

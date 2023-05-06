@@ -263,6 +263,17 @@ exports.updateNote = function(note, body, createdBy, animalId) {
   }
 };
 
+// exports.updateWeightList = function(entities) {
+//   var maps = [];
+//   for(var index =0; index< entities.length; index++) {
+//     if(entities[index]){
+//       entities[index].time = entities[index].time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+//       console.log('Time: ', entities[index].time);
+//     }
+//   }
+//   return Promise.resolve(entities);
+// };
+
 exports.updateAnimalBodyScore = function(data, body, createdBy, animalId) {
   if(data == null) {
     return Promise.reject('Score id is not be empty. So please enter valid Score id!');
@@ -402,13 +413,11 @@ exports.updateInsemination = function(data, body, createdBy, animalId) {
       map.updatedBy = createdBy;
     } else {
       map.createdBy = createdBy;
-      map.status = "InProgress"
+      map.status = "Uncertain"
     }
-    let date_ob = new Date();    
-    let time = date_ob.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
     map.notes = body.notes;
     map.date = body.date;
-    map.time = time;
+    map.time = body.time;
     map.examinationDate = body.examinationDate;
     map.price = body.price;
     map.staff = body.staff;
