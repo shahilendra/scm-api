@@ -24,10 +24,11 @@ module.exports.animal = require('./schemas/animal'); // ok
 module.exports.transaction = require('./schemas/transaction'); // ok
 module.exports.note = require('./schemas/note'); // ok
 module.exports.insemination = require('./schemas/insemination'); // ok
-
 module.exports.lactation = require('./schemas/lactation'); // ok
 module.exports.animalBodyScore = require('./schemas/animal-body-score'); // ok
 module.exports.animalLocation = require('./schemas/animal-location'); // ok
 module.exports.animalMilkYield = require('./schemas/animal-milk-yield'); // ok
 module.exports.animalWeight = require('./schemas/animal-weight'); // ok
 module.exports.animalGroup = require('./schemas/animal-group'); // ok
+module.exports.animalExamination = require('./schemas/animal-examination'); // ok
+module.exports.animalVaccination = require('./schemas/animal-vaccination'); // ok

@@ -10,7 +10,7 @@ function verifyToken(req, res, next) {
   // verifies secret and checks exp
   jwt.verify(token, config.secret, function(err, decoded) {      
     if (err)
-      return helpers.finalResponse(500, { auth: false, message: 'Failed to authenticate token.' }, res);
+      return helpers.finalResponse(401, { auth: false, message: 'Failed to authenticate token.' }, res);
     // if everything is good, save to request for use in other routes1
     req.userId = decoded.id;
     if(!decoded.organisationId && !req.url.contains('/login-as-organization')) {

@@ -706,3 +706,49 @@ exports.convert = function(array) {
     return Promise.reject(ex);
   }
 }
+
+exports.updateAnimalExamination = function(data, body, createdBy, animalId) {
+  if(data == null) {
+    return Promise.reject({ message: 'AnimalExamination id is not be empty. So please enter valid AnimalExamination id!'});
+  } else if(body.date) {
+    let map = {};
+    if(data.id) {
+      map.updatedBy = createdBy;
+    } else {
+      map.createdBy = createdBy;
+    }
+    map.diagnosis = body.diagnosis;
+    map.result = body.result;
+    map.examinationType = body.examinationType;
+    map.date = body.date;
+    map.isActive = body.isActive;
+    map.animalId = animalId;
+    map.organisationId = body.organisationId;
+    console.log(map);
+    return Promise.resolve(map);
+  } else {
+    return Promise.reject({ message: 'AnimalExamination message should not be empty. So please enter valid AnimalExamination message!'});
+  }
+};
+
+exports.updateVaccination = function(data, body, createdBy, animalId) {
+  if(data == null) {
+    return Promise.reject({ message: 'Vaccination id is not be empty. So please enter valid Vaccination id!'});
+  } else if(body.date) {
+    let map = {};
+    if(data.id) {
+      map.updatedBy = createdBy;
+    } else {
+      map.createdBy = createdBy;
+    }
+    map.vaccine = body.vaccine;
+    map.notes = body.notes;
+    map.date = body.date;
+    map.isActive = body.isActive;
+    map.animalId = animalId;
+    map.organisationId = body.organisationId;
+    return Promise.resolve(map);
+  } else {
+    return Promise.reject({ message: 'Vaccination message should not be empty. So please enter valid Vaccination message!'});
+  }
+};

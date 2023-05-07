@@ -78,7 +78,9 @@ const dropTestDbs = () => {
     models.animalLocation.sync(),
     models.animalMilkYield.sync(),
     models.animalWeight.sync(),
-    models.animalGroup.sync()
+    models.animalGroup.sync(),
+    models.animalExamination.sync(),
+    models.animalVaccination.sync()
   ]);
 };
 
