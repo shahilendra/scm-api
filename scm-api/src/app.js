@@ -28,6 +28,17 @@ app.use('/api/v1/resources', express.static(dir));
 
 app.use('/api', require('./routes')); // tested
 
+app.use((err, req, res, next) => {
+  if (! err) {
+      return next();
+  }
+  console.log('========================================');
+  console.log(err);
+  console.log('========================================');
+  res.status(500);
+  res.send('500: Internal server error');
+});
+
 app.listen(port, () => {
     console.log("Server listening on port " + port);
 });

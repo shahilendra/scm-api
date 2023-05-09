@@ -32,3 +32,5 @@ module.exports.animalWeight = require('./schemas/animal-weight'); // ok
 module.exports.animalGroup = require('./schemas/animal-group'); // ok
 module.exports.animalExamination = require('./schemas/animal-examination'); // ok
 module.exports.animalVaccination = require('./schemas/animal-vaccination'); // ok
+module.exports.animalBreedingActivity = require('./schemas/animal-breeding'); // ok
+module.exports.animalPregnancy = require('./schemas/animal-pregnancy'); // ok

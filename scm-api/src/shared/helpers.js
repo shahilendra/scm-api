@@ -752,3 +752,52 @@ exports.updateVaccination = function(data, body, createdBy, animalId) {
     return Promise.reject({ message: 'Vaccination message should not be empty. So please enter valid Vaccination message!'});
   }
 };
+exports.updateAnimalBreedingActivity = function(data, body, createdBy, animalId) {
+  if(data == null) {
+    return Promise.reject({ message: 'Breeding Activity id is not be empty. So please enter valid Breeding Activity id!'});
+  } else if(body.date) {
+    let map = {};
+    if(data.id) {
+      map.updatedBy = createdBy;
+    } else {
+      map.createdBy = createdBy;
+      map.activityType = 'Diagnosis';
+    }
+    let date_ob = new Date();    
+    let time = date_ob.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    map.diagnosisType = body.diagnosisType;
+    map.time = time;
+    map.date = body.date;
+    map.isActive = body.isActive;
+    map.animalId = animalId;
+    map.organisationId = body.organisationId;
+    return Promise.resolve(map);
+  } else {
+    return Promise.reject({ message: 'Breeding Activity message should not be empty. So please enter valid Breeding Activity message!'});
+  }
+};
+
+exports.updateAnimalPregnancy = function(data, body, createdBy, animalId) {
+  if(data == null) {
+    return Promise.reject({ message: 'Pregnancy id is not be empty. So please enter valid Pregnancy id!'});
+  } else if(body.date) {
+    let map = {};
+    if(data.id) {
+      map.updatedBy = createdBy;
+    } else {
+      map.createdBy = createdBy;
+    }
+    map.status = body.status;
+    map.time = body.time;
+    map.date = body.date;
+    map.veterinarian = body.veterinarian;
+    map.veterinarianPhone = body.veterinarianPhone;
+    map.notes = body.notes;
+    map.isActive = body.isActive;
+    map.animalId = animalId;
+    map.organisationId = body.organisationId;
+    return Promise.resolve(map);
+  } else {
+    return Promise.reject({ message: 'Pregnancy date should not be empty. So please enter valid Pregnancy date!'});
+  }
+};

@@ -99,5 +99,7 @@ router.use('/:animalId/weights', require('./weight'));  //tested
 router.use('/:animalId/groups', require('./group'));  //tested
 router.use('/:animalId/vaccinations', require('./vaccination'));  //tested
 router.use('/:animalId/examinations', require('./examination'));  //tested
+router.use('/:animalId/breedings', require('./breeding'));  //tested
+router.use('/:animalId/pregnancies', require('./pregnancy'));  //tested
 
 module.exports = router;
