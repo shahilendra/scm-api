@@ -801,3 +801,21 @@ exports.updateAnimalPregnancy = function(data, body, createdBy, animalId) {
     return Promise.reject({ message: 'Pregnancy date should not be empty. So please enter valid Pregnancy date!'});
   }
 };
+
+exports.getOthersInfo = function(animal) {
+  let othersInfo = {
+    damDetails: {},
+    calfs: [],
+    siblings: []
+  };
+  for(let index = 0; index < animal.length; index++) {
+    if(animal[index].isDamDetail == 1) {
+      othersInfo.damDetails = animal[index]; 
+    } else if(animal[index].isCalf == 1) {
+      othersInfo.calfs.push(animal[index]);
+    } else if(animal[index].isSiblings == 1) {
+      othersInfo.siblings.push(animal[index]);
+    }
+  }
+  return Promise.resolve(othersInfo);
+}
